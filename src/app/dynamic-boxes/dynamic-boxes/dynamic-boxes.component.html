@@ -1,8 +1,10 @@
-<div *ngFor="let box of boxes; index as ind" class="outer-box">
-    <button class="delete-icon" *ngIf="box.showImage" mat-icon-button (click)="deleteButtonClicked(ind, box.id)">
-        <mat-icon mat-list-icon *ngIf="box.showImage" [svgIcon]="'delete'"></mat-icon>
-    </button>
-    <div (click)="boxClicked(box.id)" class="image-box">
-        <img *ngIf="box.showImage" [src]="box.imageUrl" alt="No Image">
+<ng-container *ngFor="let box of boxes; index as ind">
+    <div [ngClass]="box.showShadow ? 'show-shadow' : ''" class="outer-box" >
+        <button class="delete-icon" *ngIf="box.showImage" mat-icon-button (click)="deleteButtonClicked(ind, box.id)">
+            <mat-icon mat-list-icon *ngIf="box.showImage" [svgIcon]="'delete'"></mat-icon>
+        </button>
+        <div (click)="boxClicked(box.id)" class="image-box">
+            <img *ngIf="box.showImage" [src]="box.imageUrl" alt="No Image">
+        </div>
     </div>
-</div>
+</ng-container>

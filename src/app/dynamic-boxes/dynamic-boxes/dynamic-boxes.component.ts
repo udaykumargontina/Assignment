@@ -38,7 +38,7 @@ export class DynamicBoxesComponent implements OnInit {
 
   ngOnInit() {
     for (let box = 1; box <= this.count; box++) {
-      this.boxes.push({ id: box, showImage: false, imageUrl: this.randomImageMap[Math.floor(Math.random() * 15) + 1]['imageUrl'] });
+      this.boxes.push({ id: box, showImage: false, imageUrl: this.randomImageMap[Math.floor(Math.random() * 15) + 1]['imageUrl'], showShadow : false });
       this.imageDisplayMap.set(box, false);
     }
   }
@@ -49,6 +49,7 @@ export class DynamicBoxesComponent implements OnInit {
       this.boxes.forEach(item => {
         if (item.id === this.counter) {
           item.showImage = true;
+          item.showShadow = true;
         }
       });
       this.counter++;
@@ -63,7 +64,7 @@ export class DynamicBoxesComponent implements OnInit {
     });
     this.boxes.splice(index, 1);
     this.counter--;
-    this.boxes.push({ id: this.boxes.length + 1, showImage: false, imageUrl: this.randomImageMap[Math.floor(Math.random() * 15) + 1]['imageUrl'] });
+    this.boxes.push({ id: this.boxes.length + 1, showImage: false, imageUrl: this.randomImageMap[Math.floor(Math.random() * 15) + 1]['imageUrl'], showShadow : false });
     this.imageDisplayMap.set(this.counter, false);
   }
 }
